@@ -12,6 +12,17 @@
   <a href="#" onclick="login();">Login</a><br>
 </div>
 
+<br>
+<a href="#" onclick="publishStory();">Publish feed story</a><br><br>
+<a href="#" onclick="sendRequest();">Send request</a><br><br>
+
+<div id="social-plugin">
+    <fb:like width="250"></fb:like>
+</div>
+
+<fb:comments href="http://myfbse.com/jp" num_posts="2" width="300"></fb:comments>
+
+
 <div id="fb-root"></div>
 
 <script>
@@ -76,6 +87,31 @@ function getCommonLikes(response) {
       console.log(output);
     }});
   });
+}
+
+function publishStory() {
+    FB.ui({
+        method: 'feed',
+        name: 'I\'m building a social mobile web app!',
+        caption: 'This web app is going to be awesome.',
+        description: 'Check out Facebook\'s developer site to start building.',
+        link: 'http://myfbse.com/hk',
+        picture: 'http://www.facebookmobileweb.com/hackbook/img/facebook_icon_large.png'
+    },
+    function(response) {
+        console.log('publishStory response: ', response);
+    });
+    return false;
+}
+
+function sendRequest() {
+    FB.ui({
+        method: 'apprequests',
+        message: 'Check out this awesome app!'
+    },
+    function(response) {
+        console.log('sendRequest response: ', response);
+    });
 }
 
 </script>
